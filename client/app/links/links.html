@@ -6,4 +6,16 @@
   </ul>
     <a href='/logout' class='logout'>Logout</a>
 </div>
-<div id='container' ng-controller='LinksController'></div>
+<div id='container' ng-controller='LinksController'>
+  <div class='info' ng-repeat="link in data.links | orderBy:'-visits'">
+    <img src='/redirect_icon.png'/>
+    <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+    <div class='title'>{{link.title}}</div>
+    <div class='original'>{{link.url}}</div>
+    <!-- IMPORTANT: pay attention to route handling
+      linkRoutes listend for /:code
+      BUT prior to that, it expects api/links/
+     -->
+    <a href='{{link.base_url}}/api/links/{{link.code}}'>{{link.base_url}}/{{link.code}}</a>
+  </div>
+</div>

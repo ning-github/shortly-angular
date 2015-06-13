@@ -21,15 +21,15 @@ module.exports = {
   },
 
   allLinks: function (req, res, next) {
-  var findAll = Q.nbind(Link.find, Link);
+    var findAll = Q.nbind(Link.find, Link);
 
-  findAll({})
-    .then(function (links) {
-      res.json(links);
-    })
-    .fail(function (error) {
-      next(error);
-    });
+    findAll({})
+      .then(function (links) {
+        res.json(links);
+      })
+      .fail(function (error) {
+        next(error);
+      });
   },
 
   newLink: function (req, res, next) {
@@ -72,6 +72,7 @@ module.exports = {
   },
 
   navToLink: function (req, res, next) {
+    console.log('is navLink called?');
     var link = req.navLink;
     link.visits++;
     link.save(function (err, savedLink) {

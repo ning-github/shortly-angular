@@ -5,6 +5,13 @@
   </ul>
     <a href='/logout' class='logout'>Logout</a>
 </div>
-<div id='container' ng-controller='ShortenController'></div>
+<div id='container' ng-controller='ShortenController'>
+  <form>
+    <input class='text' ng-model='link.url' type='url' name='url' required>
+    <input type='submit' ng-click='addLink(link.url)' value='Shorten'>
+  </form>
+  <img class='spinner' src='../assets/spiffygif_46x46.gif'>
+  <div class='message'></div>
+</div>
 
 
