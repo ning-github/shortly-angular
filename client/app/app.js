@@ -3,32 +3,39 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute'
+  'ui.router'
 ])
-.config(function($routeProvider, $httpProvider) {
+.config(function($stateProvider, $httpProvider) {
   // sends the template url to ng-view direct in index.html
-  $routeProvider
-    .when('/signin', {
+
+  // $httpProvider.otherwise("/links");
+
+  $stateProvider
+    .state('#/signin', {
       templateUrl: 'app/auth/signin.html',
+      url: '/signin',
       controller: 'AuthController'
     })
-    .when('/signup', {
+    .state('#/signup', {
       templateUrl: 'app/auth/signup.html',
+      url: '/signup',
       controller: 'AuthController'
     })
     // Your code here
-    .when('/links', {
+    .state('/#/links', {
       templateUrl: 'app/links/links.html',
+      url: '/links',
       controller: 'LinksController'
     })
-    .when('/shorten', {
+    .state('/#/shorten', {
       templateUrl: 'app/shorten/shorten.html',
+      url: '/shorten',
       controller: 'ShortenController'
     })
-    .otherwise({
-      // takes to /#/signin (# is important to note)
-      redirectTo: '/links'
-    });
+    // .otherwise({
+    //   // takes to /#/signin (# is important to note)
+    //   redirectTo: '/links'
+    // });
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
