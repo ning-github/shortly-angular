@@ -5,10 +5,10 @@ angular.module('shortly', [
   'shortly.auth',
   'ui.router'
 ])
-.config(function($stateProvider, $httpProvider) {
+.config(function($urlRouterProvider, $stateProvider, $httpProvider) {
   // sends the template url to ng-view direct in index.html
 
-  // $httpProvider.otherwise("/links");
+  $urlRouterProvider.otherwise("/links");
 
   $stateProvider
     .state('#/signin', {
